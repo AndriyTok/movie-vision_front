@@ -4,5 +4,9 @@
 
 body{
     margin: 0;
-    background-image: url("./assets/background.png")
+    /*background-image: url("pages/form_assets/background.png")*/
+}
+
+.font-montserrat {
+    font-family: 'Montserrat', sans-serif;
 }
