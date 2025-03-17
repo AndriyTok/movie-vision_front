@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 interface FormComponentProps {
     children: ReactNode;
 }
+
 export default function FormComponent({children}:FormComponentProps) {
     return (
         <div>
