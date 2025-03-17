@@ -1,4 +1,5 @@
 import * as React from "react";
+import {useState} from "react";
 
 interface InputsProps {
     username: string;
@@ -14,10 +15,17 @@ interface InputsProps {
 }
 
 export default function Inputs({
-                                   username, setUsername, email, setEmail, password, setPassword, confirmPassword, setConfirmPassword,
-                                   isValidPassword, passwordsAreMatching
+                                   username,
+                                   setUsername,
+                                   email,
+                                   setEmail,
+                                   password,
+                                   setPassword,
+                                   confirmPassword,
+                                   setConfirmPassword,
+                                   isValidPassword,
+                                   passwordsAreMatching
                                }: InputsProps) {
-    //states for the form
 
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
@@ -26,6 +34,9 @@ export default function Inputs({
     const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setConfirmPassword(e.target.value);
     };
+
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     return (
 
@@ -67,18 +78,20 @@ export default function Inputs({
                         'h-[3.1vh] w-[19.5vw] bg-[rgba(28,28,28,0)] font-montserrat text-[0.8em] ' +
                         'outline-none text-[#ffffff]'
                     }
-                    type='password'
+                    type={showPassword ? 'text' : 'password'}
                     placeholder='Password'
                     value={password}
                     onChange={handlePasswordChange}
                 />
 
                 <span
-                    className="absolute text-[#464646] right-3 top-1/2 transform -translate-y-1/2
-                                cursor-pointer"
-                    id="togglePassword">
+                    className={`absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer
+                        ${showPassword ? 'text-[white]' : 'text-[#464646] '}`}
+                    id="togglePassword"
+
+                    onClick={() => setShowPassword(!showPassword)}>
                             &#x1F441;
-                        </span>
+                </span>
 
 
             </div>
@@ -93,7 +106,7 @@ export default function Inputs({
                         'h-[3.1vh] w-[19.5vw] bg-[rgba(28,28,28,0)] font-montserrat text-[0.8em] ' +
                         'outline-none text-[#ffffff]'
                     }
-                    type='password'
+                    type={showConfirmPassword ? 'text' : 'password'}
                     placeholder='Confirm Password'
                     value={confirmPassword}
                     onChange={handleConfirmPasswordChange}/>
@@ -105,11 +118,11 @@ export default function Inputs({
                 )}
 
                 <span
-                    className="absolute text-[#464646] right-3 top-1/2 transform -translate-y-1/2
-                                cursor-pointer"
-                    id="togglePassword">
-
-                                &#x1F441;
+                    className={`absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer
+                        ${showConfirmPassword ? 'text-[white]' : 'text-[#464646] '}`}
+                    id="togglePassword2"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                            &#x1F441;
                 </span>
 
             </div>

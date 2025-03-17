@@ -1,5 +1,10 @@
-export default function UsernameInput(){
-    return(
+interface UsernameInputProps {
+    value: string
+    onChange: (value: string) => void
+}
+
+export default function UsernameInput({value, onChange}: UsernameInputProps) {
+    return (
         <div className={'w-full'}>
             <input
                 className={
@@ -9,6 +14,8 @@ export default function UsernameInput(){
                 }
                 placeholder={'Username'}
                 type="username"
+                value={value}
+                onChange={(e) => onChange(e.target.value)}
             />
         </div>
 
