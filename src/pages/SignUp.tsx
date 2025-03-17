@@ -1,5 +1,6 @@
-import SignUpForm from "../components/Form/SignUpForm.tsx";
+import FormComponent from "../components/Form/FormComponent.tsx";
 import backgroundImage from './form_assets/background.png';
+import SignUpComponent from "../components/Form/SignUpComponent.tsx";
 
 export default function SignUp(){
 
@@ -8,7 +9,9 @@ export default function SignUp(){
         <div className={"flex w-full h-screen "}
         style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover' }}>
             <div className={"w-full flex items-center justify-center"}>
-                <SignUpForm/>
+                <FormComponent>
+                    <SignUpComponent></SignUpComponent>
+                </FormComponent>
             </div>
 
         </div>
