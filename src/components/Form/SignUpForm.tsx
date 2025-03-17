@@ -84,7 +84,7 @@ export default function SignUpForm() {
                         </div>
 
                     </div>
-                    <div className="flex justify-center gap-4 mt-7 mb-7">
+                    <div className="flex justify-center items-center w-full gap-4 mt-7 mb-7">
                         <button className="w-12 h-12 bg-center bg-cover"
                                 style={{backgroundImage: `url(${x})`}}></button>
                         <button className="w-12 h-12 bg-center bg-cover"
@@ -96,7 +96,7 @@ export default function SignUpForm() {
                     <div>
                         <button
                             className="w-full h-[5.1vh] bg-gradient-to-r from-[#00AEEF] to-[#264F97]
-                            rounded-3xl font-montserrat text-[0.8em] outline-none text-black
+                            rounded-3xl font-montserrat text-[0.8em] outline-none text-black text-center
                             flex items-center justify-center"
                         >
                             Sign Up
