@@ -20,14 +20,10 @@ export default function SignInComponent() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (!isValid) {
-            alert("Please fill in both fields.");
-            return;
-        }
 
         // Імітація надсилання на бекенд
         const userData = { username, password };
-        console.log("Sending data to backend:", userData);
+        alert(`Sending data to backend:${userData}`);
 
         try {
             const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
@@ -59,7 +55,7 @@ export default function SignInComponent() {
                     setPassword={setPassword}
                 />
                 <SocialMediaButtons />
-                <SignInButton disabled={!isValid} />
+                <SignInButton disabled={!isValid}/>
                 <ForgotPassword/>
                 </form>
             </div>
