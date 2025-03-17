@@ -20,7 +20,6 @@ export default function SignInComponent() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-
         // Імітація надсилання на бекенд
         const userData = { username, password };
         alert(`Sending data to backend:${userData}`);
