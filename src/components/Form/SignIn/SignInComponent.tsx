@@ -22,7 +22,7 @@ export default function SignInComponent() {
 
         // Імітація надсилання на бекенд
         const userData = { username, password };
-        alert(`Sending data to backend:${userData}`);
+        alert(`Sending data to backend:${userData.username} and ${userData.password}`);
 
         try {
             const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
