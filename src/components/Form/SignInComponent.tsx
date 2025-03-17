@@ -15,11 +15,11 @@ export default function SignInComponent(){
                     </button>
 
                 </div>
-                <div className={'w-[22vw] flex flex-wrap justify-center '}>
+                <div className={'w-[22vw] flex flex-wrap justify-center  bg-[rgba(28,28,28,0)]'}>
                     <div className={'w-full'}>
                         <input
                             className={
-                                'border-2 border-[#464646] p-4 mb-5 w-full h-[3.1vh] bg-[rgba(28,28,28,0.9)] ' +
+                                'border-2 border-[#464646] p-4 mb-5 w-full h-[3.1vh] bg-[rgba(28,28,28,0)] ' +
                                 'rounded-3xl font-montserrat text-[0.8em] outline-none text-[#ffffff] '
                             }
                             placeholder={'Username'}
@@ -28,10 +28,10 @@ export default function SignInComponent(){
 
                     <div
                         className={'w-full flex justify-between items-center border-2 border-[#464646] p-4 mb-5 h-[3.1vh] ' +
-                            'bg-[rgba(28,28,28,0.9)] rounded-3xl font-montserrat relative'}>
+                            'bg-[rgba(28,28,28,0)] rounded-3xl font-montserrat relative'}>
                         <input
                             className={
-                                'h-[3.1vh] w-[19.5vw] bg-[rgba(28,28,28,0.9)] font-montserrat text-[0.8em] ' +
+                                'h-[3.1vh] w-[19.5vw] bg-[rgba(28,28,28,0)] font-montserrat text-[0.8em] ' +
                                 'outline-none text-[#ffffff] '
                             }
                             type={'password'}
