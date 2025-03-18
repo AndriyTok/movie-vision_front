@@ -1,0 +1,242 @@
+import * as React from "react";
+import PasswordField from "./PasswordField.tsx";
+import {useEffect, useState} from "react";
+import InputField from "./InputField.tsx";
+
+interface InputsProps {
+    username: string;
+    setUsername: (username: string) => void;
+    email: string;
+    setEmail: (email: string) => void;
+    password: string;
+    setPassword: (password: string) => void;
+    confirmPassword: string;
+    setConfirmPassword: (confirmPassword: string) => void;
+    isValidPassword: boolean;
+    passwordsAreMatching: boolean;
+}
+
+const Inputs: React.FC<InputsProps> = ({
+                                           username,
+                                           setUsername,
+                                           email,
+                                           setEmail,
+                                           password,
+                                           setPassword,
+                                           confirmPassword,
+                                           setConfirmPassword,
+                                           isValidPassword,
+                                           passwordsAreMatching
+                                       }) => {
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    useEffect(() => {
+        console.log("Form updated", {username, email, password, confirmPassword});
+    }, [username, email, password, confirmPassword]);
+
+    return (
+        <div className="w-[22vw] flex flex-wrap justify-center">
+            <InputField type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <InputField type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <PasswordField placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <div
+                className={'w-full flex justify-between items-center border-2 border-[#464646] p-4 mb-5 ' +
+                                    'h-[3.1vh] bg-[rgba(28,28,28,0)] rounded-3xl font-montserrat relative ' +
+                                    'transition-all duration-300 focus:border-[#264F97] hover:border-[#264F97]'}>
+                <input
+                    className={
+                        'h-[3.1vh] w-[19.5vw] bg-[rgba(28,28,28,0)] font-montserrat text-[0.8em] ' +
+                        'outline-none text-[#ffffff]'
+                    }
+                    type={showConfirmPassword ? 'text' : 'password'}
+                    placeholder="Confirm Password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                {!passwordsAreMatching && confirmPassword.length > 0 && (
+                    <p className="text-red-500 important! text-sm w-full font-montserrat ">
+                        Passwords do not match!
+                    </p>
+                )}
+                <span
+                    className={`absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer ${showConfirmPassword ? "text-white" : "text-[#464646]"}`}
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                    &#x1F441;
+                </span>
+
+            </div>
+            {!isValidPassword && password.length > 0 && (
+                <div className="text-red-500 text-sm w-full font-montserrat mb-5 text-center border-2 border-[#464646] rounded-3xl p-4 bg-[rgba(28,28,28,0.9)]">
+                    Password must be 8+ characters, include 1 uppercase letter and number!
+                </div>
+            )}
+        </div>
+    );
+};
+//             <div
+//                 className={'w-full flex justify-between items-center border-2 border-[#464646] p-4 mb-5 ' +
+//                     'h-[3.1vh] bg-[rgba(28,28,28,0)] rounded-3xl font-montserrat relative ' +
+//                     'transition-all duration-300 focus:border-[#264F97] hover:border-[#264F97]'}>
+//                 <input
+//                     className={
+//                         'h-[3.1vh] w-[19.5vw] bg-[rgba(28,28,28,0)] font-montserrat text-[0.8em] ' +
+//                         'outline-none text-[#ffffff]'
+//                     }
+//                     type={showConfirmPassword ? 'text' : 'password'}
+//                     placeholder='Confirm Password'
+//                     value={confirmPassword}
+//                     onChange={handleConfirmPasswordChange}/>
+//
+//                 {!passwordsAreMatching && confirmPassword.length > 0 && (
+//                     <p className='text-red-500 text-sm w-full font-montserrat '>
+//                         Passwords do not match!
+//                     </p>
+//                 )}
+//
+//                 <span
+//                     className={`absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer
+//                         ${showConfirmPassword ? 'text-[white]' : 'text-[#464646] '}`}
+//                     id="togglePassword2"
+//                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+//                             &#x1F441;
+//                 </span>
+//
+//             </div>
+
+export default Inputs;
+
+// interface InputsProps {
+//     username: string;
+//     setUsername: (username: string) => void;
+//     email: string;
+//     setEmail: (email: string) => void;
+//     password: string;
+//     setPassword: (password: string) => void;
+//     confirmPassword: string;
+//     setConfirmPassword: (confirmPassword: string) => void;
+//     isValidPassword: boolean;
+//     passwordsAreMatching: boolean;
+// }
+//
+// export default function Inputs({
+//                                    username,
+//                                    setUsername,
+//                                    email,
+//                                    setEmail,
+//                                    password,
+//                                    setPassword,
+//                                    confirmPassword,
+//                                    setConfirmPassword,
+//                                    isValidPassword,
+//                                    passwordsAreMatching
+//                                }: InputsProps) {
+//
+//     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+//         setPassword(e.target.value);
+//     };
+//
+//     const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+//         setConfirmPassword(e.target.value);
+//     };
+//
+//     const [showPassword, setShowPassword] = useState(false);
+//     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+//
+//     return (
+//
+//         <div className={'w-[22vw] flex flex-wrap justify-center '}>
+//             <div className={'w-full'}>
+//                 <input
+//                     className={
+//                         'border-2 border-[#464646] p-4 mb-5 w-full h-[3.1vh] bg-[rgba(28,28,28,0)] ' +
+//                         'rounded-3xl font-montserrat text-[0.8em] outline-none text-[#ffffff] ' +
+//                         'transition-all duration-300 focus:border-[#264F97] hover:border-[#264F97]'
+//                     }
+//                     placeholder="Username"
+//                     type="username"
+//                     value={username}
+//                     onChange={(e) => setUsername(e.target.value)}
+//                 />
+//             </div>
+//             <div className={'w-full'}>
+//                 <input
+//                     className={
+//                         'border-2 border-[#464646] p-4 mb-5 w-full h-[3.1vh] bg-[rgba(28,28,28,0)] ' +
+//                         'rounded-3xl font-montserrat text-[0.8em] outline-none text-[#ffffff] ' +
+//                         'transition-all duration-300 focus:border-[#264F97] hover:border-[#264F97]'
+//                     }
+//                     placeholder='Email'
+//                     type='email'
+//                     value={email}
+//                     onChange={(e) => setEmail(e.target.value)}
+//                 />
+//             </div>
+//
+//
+//             <div
+//                 className={'w-full flex justify-between items-center border-2 border-[#464646] p-4 mb-5 h-[3.1vh] ' +
+//                     'bg-[rgba(28,28,28,0)] rounded-3xl font-montserrat relative transition-all duration-300' +
+//                     ' focus:border-[#264F97] hover:border-[#264F97]'}>
+//                 <input
+//                     className={
+//                         'h-[3.1vh] w-[19.5vw] bg-[rgba(28,28,28,0)] font-montserrat text-[0.8em] ' +
+//                         'outline-none text-[#ffffff]'
+//                     }
+//                     type={showPassword ? 'text' : 'password'}
+//                     placeholder='Password'
+//                     value={password}
+//                     onChange={handlePasswordChange}
+//                 />
+//
+//                 <span
+//                     className={`absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer
+//                         ${showPassword ? 'text-[white]' : 'text-[#464646] '}`}
+//                     id="togglePassword"
+//
+//                     onClick={() => setShowPassword(!showPassword)}>
+//                             &#x1F441;
+//                 </span>
+//
+//
+//             </div>
+//
+//
+//             <div
+//                 className={'w-full flex justify-between items-center border-2 border-[#464646] p-4 mb-5 ' +
+//                     'h-[3.1vh] bg-[rgba(28,28,28,0)] rounded-3xl font-montserrat relative ' +
+//                     'transition-all duration-300 focus:border-[#264F97] hover:border-[#264F97]'}>
+//                 <input
+//                     className={
+//                         'h-[3.1vh] w-[19.5vw] bg-[rgba(28,28,28,0)] font-montserrat text-[0.8em] ' +
+//                         'outline-none text-[#ffffff]'
+//                     }
+//                     type={showConfirmPassword ? 'text' : 'password'}
+//                     placeholder='Confirm Password'
+//                     value={confirmPassword}
+//                     onChange={handleConfirmPasswordChange}/>
+//
+//                 {!passwordsAreMatching && confirmPassword.length > 0 && (
+//                     <p className='text-red-500 text-sm w-full font-montserrat '>
+//                         Passwords do not match!
+//                     </p>
+//                 )}
+//
+//                 <span
+//                     className={`absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer
+//                         ${showConfirmPassword ? 'text-[white]' : 'text-[#464646] '}`}
+//                     id="togglePassword2"
+//                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+//                             &#x1F441;
+//                 </span>
+//
+//             </div>
+//             {!isValidPassword && password.length > 0 && (
+//                 <div className="text-red-500 text-sm w-full font-montserrat flex justify-between
+//                         mb-5 text-center border-2 border-[#464646] rounded-3xl p-4 bg-[rgba(28,28,28,0.9)]">
+//                     Password must be 8+ characters, include 1 uppercase letter and number!
+//                 </div>
+//             )}
+//
+//         </div>
+//     )
+// }
