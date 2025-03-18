@@ -1,5 +1,5 @@
-import ChoiceButtons from "./SignInComponents/ChoiceButtons.tsx";
-import SocialMediaButtons from "../SocialMediaButtons.tsx";
+import SignInChoiceButtons from "./SignInComponents/SignInChoiceButtons.tsx";
+import SocialMediaButtons from "../CommonComponents/SocialMediaButtons.tsx";
 import Inputs from "./SignInComponents/Inputs/Inputs.tsx";
 import SignInButton from "./SignInComponents/SignInButton.tsx";
 import ForgotPassword from "./SignInComponents/ForgotPassword.tsx";
@@ -46,7 +46,7 @@ export default function SignInComponent() {
         <div className={"bg-[rgba(28,28,28,0.8)] w-[35vw] h-[77vh] px-10 rounded-3xl flex justify-center"}>
             <div className={''}>
                 <form onSubmit={handleSubmit}>
-                <ChoiceButtons />
+                <SignInChoiceButtons />
                 <Inputs
                     username={username}
                     setUsername={setUsername}

@@ -1,5 +1,5 @@
-import ChoiceButtons from "./SignUpComponents/ChoiceButtons.tsx";
-import SocialMediaButtons from "../SocialMediaButtons.tsx";
+import SignUpChoiceButtons from "./SignUpComponents/SignUpChoiceButtons.tsx";
+import SocialMediaButtons from "../CommonComponents/SocialMediaButtons.tsx";
 import Inputs from "./SignUpComponents/Inputs.tsx";
 import {useState} from "react";
 import { validatePassword, passwordsMatch } from "../utils/validation_functions.ts";
@@ -17,7 +17,7 @@ export default function SignUpComponent() {
     return (
         <div className={"bg-[rgba(28,28,28,0.8)] w-[35vw] h-[77vh] px-10 rounded-3xl flex justify-center"}>
             <div className={''}>
-            <ChoiceButtons/>
+            <SignUpChoiceButtons/>
 
                 <Inputs
                     username={username}

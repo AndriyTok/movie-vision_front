@@ -1,6 +1,6 @@
-import x from "./form_assets/x.png";
-import google from "./form_assets/google.png";
-import fb from "./form_assets/fb.png";
+import x from "../form_assets/x.png";
+import google from "../form_assets/google.png";
+import fb from "../form_assets/fb.png";
 
 export default function SocialMediaButtons(){
     return(
